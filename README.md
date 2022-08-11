@@ -1,5 +1,5 @@
 # useful-bash-alias-function
-Custom alias or functions that are helpful during CTF / engagement
+Custom alias or functions that are helpful during CTF / engagement. Put these in your `~/.zshrc`
 
 # Return to previous directory
 
