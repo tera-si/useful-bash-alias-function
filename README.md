@@ -40,7 +40,7 @@ kali@kali:~$ smbserver-here
 
 Sometimes windows refuses to connect to anonymous SMB shares. Use this one instead then:
 
-`smbserver-here-pass='sudo impacket-smbserver kali . -smb2support -username root -password toor'`
+`alias smbserver-here-pass='sudo impacket-smbserver kali . -smb2support -username root -password toor'`
 
 Change the username and password if you need to.
 
