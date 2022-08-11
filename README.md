@@ -105,3 +105,95 @@ kali@kali:~$ new-ctf-dir newdir
 
 kali@kali:newdir$
 ```
+
+# quick-ish nmap scan all TCP ports with default scripts
+
+```
+nmap-fast-tcp-all () {
+    if [ -f tcp-scan.nmap ]; then
+        echo "Scan results already exist in current directory"
+    else
+        sudo nmap -vv -T4 --min-rate=800 -A -p- -oA tcp-scan $1
+    fi
+}
+```
+
+## Usage:
+
+Supply the target IP
+
+```
+$ nmap-fast-tcp-all 127.0.0.1
+```
+
+# quick-ish nmap scan all UDP ports
+
+```
+nmap-fast-udp-all () {
+    if [ -f udp-scan.nmap ]; then
+        echo "Scan results already exist in current directory"
+    else
+        sudo nmap -vv -T4 --min-rate=1200 -p- -sU -oA udp-scan $1
+    fi
+}
+```
+
+## Usage:
+
+Supply the target IP
+
+```
+$ nmap-fast-udp-all 127.0.0.1
+```
+
+# quick-ish nmap scan seletected UDP ports with default scripts
+
+```
+nmap-fast-udp-details () {
+    if [ -f udp-details.nmap ]; then
+        echo "Scan results already exist in current directory"
+    else
+        sudo nmap -vv -T4 --min-rate=1200 -sU -A -p $1 -oA udp-details $2
+    fi
+}
+```
+
+## Usage:
+
+Supply the target ports and then the IP
+
+```
+$ nmap-fast-udp-details 53,123,137 127.0.0.1
+```
+
+# Pretty print XML with colours
+
+```
+pprint-xml-colours () {
+    cat $1 | xmllint --format - | pygmentize -l xml
+}
+```
+
+## Usage:
+
+Supply the XML file name
+
+```
+$ pprint-xml-colours sitemap.xml
+```
+
+# Pretty print XML (without colours)
+
+```
+pprint-xml () {
+    cat $1 | xmllint --format -
+}
+```
+
+## Usage:
+
+Supply the XML file name
+
+```
+$ pprint-xml sitemap.xml
+```
